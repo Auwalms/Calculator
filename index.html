@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+<title>Calculator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<script src="js/angular.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css"></script>
+<style>
+	body {
+		margin-left: 50px;
+		margin-right: 50px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		background-color: #f0f0f0
+	}
+	.screen{
+		text-decoration: bold;
+		font-family: cursive;
+		font-size: 15px;
+		border-radius: 4px;
+		border-width: 2px;
+		width: 150px;
+		height: 40px;
+	}
+	button{
+		width: 50px;
+		height: 50px;
+		font-family: cursive;
+	}
+	.large{
+		width: 100px
+
+	}
+	.clear{
+		height: 40px;
+		width: 50px;
+	}
+</style>
+
+</head>
+<body ng-app="mycalc">
+<div class="container-fluid" ng-controller="calcCont">
+	<p><h3 class="text-center"><strong>Designing a calculator in AngularJS</strong></h3></p>
+	<div class="text-center">
+		<button class=" btn btn-danger clear" ng-click="clear()">CE</button>	
+		<input type="text" class="screen" ng-model="viewer" value="" /></br>
+		<span class="row 1">
+		<button class=" btn btn-warning" ng-click="parser('7')">7</button>
+		<button class="btn btn-warning" ng-click="parser('8')">8</button>
+		<button class="btn btn-warning" ng-click="parser('9')">9</button>
+		<button class="btn btn-primary" ng-click="parser('+')">+</button>	
+		</span>
+		<span class="row 2">
+		<button class="btn btn-warning" ng-click="parser('4')">4</button>
+		<button class="btn btn-warning" ng-click="parser('5')">5</button>
+		<button class="btn btn-warning" ng-click="parser('6')">6</button>
+		<button class="btn btn-primary" ng-click="parser('-')">-</button>	
+		</span>
+		<span class="row 3">
+		<button class="btn btn-warning" ng-click="parser('1')">1</button>
+		<button class="btn btn-warning" ng-click="parser('2')">2</button>
+		<button class="btn btn-warning" ng-click="parser('3')">3</button>
+		<button class="btn btn-primary" ng-click="parser('*')">x</button>	
+		</span>
+		<span class="row 1">
+		<button class="btn btn-warning" ng-click="parser('0')">0</button>
+		<button class="btn btn-success large" ng-click="result()">=</button>
+		<button class="btn btn-primary" ng-click="parser('/')">/</button>
+		</span>
+		
+	</div>
+	
+		
+</div>
+
+	</div>
+	
+</div>
+<footer>
+	<caption > <h6 class="text-center">coded by Auwal MS</h6></caption>
+</footer>
+<script>
+var app= angular.module("mycalc", [])
+	app.controller("calcCont", [ "$scope", function($scope){	
+	$scope.viewer = "";
+	$scope.parser= function(value){
+		$scope.viewer += value;
+
+}
+$scope.result = function() {
+	$scope.viewer = eval($scope.viewer);
+}
+$scope.clear = function(value){
+	$scope.viewer = "";
+}
+		}]);
+
+
+</script>
+</body>
+</html>
